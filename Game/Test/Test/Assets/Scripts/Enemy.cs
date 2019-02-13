@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float speedY = 0.1f;
+    float directionY = 1.0f;
+
+    void FixedUpdate()
     {
-        
+        Vector3 position = transform.localPosition;
+        position.y += speedY * directionY;
+        transform.localPosition = position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter2D(Collision2D other)
     {
-        
+        switch (other.gameObject.name)
+        {
+            case "Wall":
+                directionY = -directionY;
+                break;
+
+        }
+
     }
 }
