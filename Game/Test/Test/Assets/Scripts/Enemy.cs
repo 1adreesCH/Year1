@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speedY = 0.1f;
+    public float speedY = 0.05f;
     float directionY = 1.0f;
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+
+
+    }
 
     void FixedUpdate()
     {
@@ -20,9 +31,13 @@ public class Enemy : MonoBehaviour
         {
             case "Wall":
                 directionY = -directionY;
+                transform.Rotate(180f, 0f, 0f);
                 break;
 
         }
+
+      
+
 
     }
 }
