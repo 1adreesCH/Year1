@@ -21,16 +21,7 @@ public class Player : MonoBehaviour
         rb2d.AddForce(movement * speed);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        switch (other.gameObject.name)
-        {
-            case "EnemyLaser*":
-                Destroy(gameObject);
-                break;
 
-        }
-    }
 
 
 }

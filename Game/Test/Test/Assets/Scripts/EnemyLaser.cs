@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyLaser : MonoBehaviour
 {
-    public float speed;
-    public float directionX;
-    public float directionY;
-
+    public float speed=0.2f;
+    public float directionX = 0f;
+    public float directionY = 1f;
+    
 
     private void FixedUpdate()
     {

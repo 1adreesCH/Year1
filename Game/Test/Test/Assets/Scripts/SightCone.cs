@@ -13,12 +13,19 @@ public class SightCone : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D Main)
-    {      
-        print("Attack");
-        LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
-        lineRenderer.startColor=c1;
-        lineRenderer.endColor=c2;
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.gameObject.name)
+        {
+            case "Main":
+                print("Attack");
+                LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
+                lineRenderer.startColor = c1;
+                lineRenderer.endColor = c2;
+                break;
+
+        }
+
 
     }
 }

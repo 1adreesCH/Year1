@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     void FixedUpdate()
@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
         Vector3 position = transform.localPosition;
         position.y += speed * directionY;
         transform.localPosition = position;
+
 
 
     }
@@ -36,10 +37,18 @@ public class Enemy : MonoBehaviour
         }
      }
 
-    void OnTriggerEnter2D(Collider2D Main)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        print("Attack2");
-        
+
+        switch (other.gameObject.name)
+        {
+            case "Main":
+                print("Attack2");
+                speed = 0;
+                break;
+
+        }
+
 
     }
 
