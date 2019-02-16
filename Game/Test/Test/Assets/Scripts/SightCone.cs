@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class SightCone : MonoBehaviour
 {
-    public bool enter = true;
+    Color c1 = Color.white;
+    Color c2 = Color.red;
+    
+
+    private void Start()
+    {
+        
+    }
 
     void OnTriggerEnter2D(Collider2D Main)
-    {
-        if (enter)
+    {      
         print("Attack");
-                       
+        LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer.startColor=c1;
+        lineRenderer.endColor=c2;
+
     }
 }

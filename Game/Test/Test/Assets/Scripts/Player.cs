@@ -16,12 +16,20 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
-
         float moveVertical = Input.GetAxis("Vertical");
-
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
         rb2d.AddForce(movement * speed);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        switch (other.gameObject.name)
+        {
+            case "EnemyLaser*":
+                Destroy(gameObject);
+                break;
+
+        }
     }
 
 

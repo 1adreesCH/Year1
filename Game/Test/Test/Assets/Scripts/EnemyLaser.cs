@@ -2,58 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyLaser : MonoBehaviour
 {
-   
     public float speed;
     public float directionX;
     public float directionY;
 
 
-    void Start()
-    {
-
-    }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Vector3 position = transform.localPosition;
         position.y += speed * directionY;
+        position.x += speed * directionX;
         transform.localPosition = position;
-
 
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        Destroy(gameObject);
+
         switch (other.gameObject.name)
         {
-            case "Wall":
-                directionY = -directionY;
-                transform.Rotate(180f, 0f, 0f);
-                break;
+            case "Main":
+               Destroy(other.gameObject);
+               break;
 
         }
-     }
-
-    void OnTriggerEnter2D(Collider2D Main)
-    {
-        print("Attack2");
-        
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
