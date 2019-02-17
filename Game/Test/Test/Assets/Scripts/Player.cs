@@ -5,12 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public bool alive;
 
     private Rigidbody2D rb2d;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        alive = true;
+
     }
 
     void FixedUpdate()
@@ -21,7 +24,17 @@ public class Player : MonoBehaviour
         rb2d.AddForce(movement * speed);
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+
+        if (other.gameObject.tag == "EnemyLaser")
+        {
+            Destroy(gameObject);
+            alive = false;
+            GameController.instance.PlayerDied();
+        }
 
 
 
+    }
 }

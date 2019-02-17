@@ -24,12 +24,12 @@ public class NewEnemyLaserScript : MonoBehaviour
     {
         Destroy(gameObject);
 
-        switch (other.gameObject.name)
-        {
-            case "Main":
-                Destroy(other.gameObject);
-                break;
+        //switch (other.gameObject.name)
+        //{
+           // case "Main":
+              //  Destroy(other.gameObject);
+               // break;
 
-        }
+        //}
     }
 }
