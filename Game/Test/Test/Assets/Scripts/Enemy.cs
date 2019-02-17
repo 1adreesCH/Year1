@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-   
+    private Rigidbody2D rb2d;
     public float speed;
     public float directionX;
     public float directionY;
 
-
     void Start()
     {
-        
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
-        Vector3 position = transform.localPosition;
-        position.y += speed * directionY;
-        transform.localPosition = position;
-
-
+        float moveHorizontal = directionX;
+        float moveVertical = directionY;
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        rb2d.AddForce(movement * speed);
 
     }
 
@@ -31,7 +29,7 @@ public class Enemy : MonoBehaviour
         {
             case "Wall":
                 directionY = -directionY;
-                transform.Rotate(180f, 0f, 0f);
+                transform.Rotate(180f, 0f, 0f);           
                 break;
 
         }
@@ -39,14 +37,11 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
         switch (other.gameObject.name)
         {
             case "Main":
-                print("Attack2");
                 speed = 0;
                 break;
-
         }
 
 

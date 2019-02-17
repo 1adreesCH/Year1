@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class EnemyLaser : MonoBehaviour
 {
-    public float speed=0.2f;
-    public float directionX = 0f;
+    private Rigidbody2D rb2d;
+    public float speed = 0.5f;
+    public float directionX;
     public float directionY = 1f;
-    
+    private float direction;
+
+    private void Start()
+    {
+    }
 
     private void FixedUpdate()
     {
+
         Vector3 position = transform.localPosition;
         position.y += speed * directionY;
         position.x += speed * directionX;

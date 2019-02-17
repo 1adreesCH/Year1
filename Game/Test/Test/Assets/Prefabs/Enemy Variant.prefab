@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977184089}
   - component: {fileID: 977184091}
-  - component: {fileID: 977184090}
+  - component: {fileID: 2100437621}
   m_Layer: 0
   m_Name: EnemyLaserSpawner
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977184088}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.03, y: 0.99, z: 0.71940064}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -57,14 +57,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.37978867, y: 2.7908273}
-      - {x: 0.03531483, y: 2.9601111}
-      - {x: -0.42463562, y: 2.8206177}
+    - - {x: 0.5264895, y: 2.4974234}
+      - {x: 0.3051403, y: 2.8197503}
+      - {x: 0.07578686, y: 2.9530327}
+      - {x: -0.3001971, y: 2.872221}
+      - {x: -0.4975631, y: 2.697214}
       - {x: -0.61140895, y: 2.3893542}
       - {x: 0.0065968316, y: -0.51182604}
       - {x: 0.046373636, y: -0.49416888}
       - {x: 0.54772687, y: 2.3893538}
---- !u!114 &977184090
+--- !u!114 &2100437621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,44 +75,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 977184088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 032a93d55d4510d4090dc2197c5f3e20, type: 3}
+  m_Script: {fileID: 11500000, guid: 6532c7bafbeeb3744b5ca5c1b13d9dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyLaser: {fileID: 7687528841580501293, guid: caf8023e16b658940acec5ae35025bbd,
+  EnemyLaser: {fileID: 4726743238991296614, guid: 886dfe2f6264f4641ad0a7f62d1fc039,
     type: 3}
-  laserpause: 5
---- !u!60 &6553326320484820277
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3323483737631484727}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -20.588993, y: 1.5575323}
-      - {x: -20.92982, y: 1.6353407}
-      - {x: -21.32494, y: 1.49687}
-      - {x: -21.509083, y: 1.1583304}
-      - {x: -20.880966, y: -1.9175912}
-      - {x: -20.88014, y: -1.8845026}
-      - {x: -20.33736, y: 1.159224}
 --- !u!60 &4362114940348886132
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -385,12 +354,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c605ece5df9d5fe4ebcda24b96228bef, type: 3}
---- !u!1 &3323483737631484727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4393319159336655574, guid: c605ece5df9d5fe4ebcda24b96228bef,
-    type: 3}
-  m_PrefabInstance: {fileID: 1362152685069021665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5216343908745978486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6522192490625340311, guid: c605ece5df9d5fe4ebcda24b96228bef,
@@ -407,7 +370,7 @@ PrefabInstance:
     - target: {fileID: 7061720429193830547, guid: 3f076c647d2aa6b4b9a55209f845ec95,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7061720429193830547, guid: 3f076c647d2aa6b4b9a55209f845ec95,
         type: 3}
@@ -417,12 +380,12 @@ PrefabInstance:
     - target: {fileID: 7061720429193830551, guid: 3f076c647d2aa6b4b9a55209f845ec95,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.3
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: 7061720429193830551, guid: 3f076c647d2aa6b4b9a55209f845ec95,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.45
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 7061720429193830551, guid: 3f076c647d2aa6b4b9a55209f845ec95,
         type: 3}
@@ -468,6 +431,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861794968697086005, guid: 3f076c647d2aa6b4b9a55209f845ec95,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861794968697086005, guid: 3f076c647d2aa6b4b9a55209f845ec95,
+        type: 3}
+      propertyPath: directionY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7061720429193830550, guid: 3f076c647d2aa6b4b9a55209f845ec95,
         type: 3}
