@@ -5,8 +5,15 @@ using UnityEngine;
 public class EnemyLaserSpawner : MonoBehaviour
 {
     public GameObject EnemyLaser;
+    public AudioClip SoundClip;
+    public AudioSource SoundSource;
 
 
+
+    private void Start()
+    {
+        SoundSource.clip = SoundClip;
+    }
     private void FixedUpdate()
     {
 
@@ -18,6 +25,7 @@ public class EnemyLaserSpawner : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(EnemyLaser, transform.position, transform.rotation);
+            SoundSource.Play();
         }
     }
 
@@ -26,6 +34,7 @@ public class EnemyLaserSpawner : MonoBehaviour
         if (other.gameObject.tag == "EnemyLaser")
         {
             Instantiate(EnemyLaser, transform.position, transform.rotation);
+            SoundSource.Play();
         }
     }
 
