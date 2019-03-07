@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Lives : MonoBehaviour
+{
+    public GameObject player;
+	public int lifeNum;
+
+    void FixedUpdate()
+    {
+        if (player.health<lifeNum)
+        {
+			Destroy(gameObject);
+			//change to set active if the player can restore life
+        }
+    }
