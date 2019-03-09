@@ -7,6 +7,8 @@ TagManager:
   - EnemyLaser
   - Enemy
   - PlayerLaser
+  - Door
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -8,8 +8,8 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public GameObject gameOverText;
     public GameObject levelCompleteText;
-    public bool gameover = false;
-    public bool levelcomplete = false;
+    private bool gameover;
+
 
     void Awake()
     {
@@ -17,30 +17,38 @@ public class GameController : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+    }
 
+    private void Start()
+    {
         gameover = false;
-        levelcomplete = false;
     }
 
     void Update()
     {
         if (gameover && Input.GetKey(KeyCode.R))
         {
-            //change to boot to main menu
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //change to boot to main menu
         }
     }
 
     public void PlayerDied()
     {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GameOver()
+    {
         gameOverText.SetActive(true);
         gameover = true;
+
     }
 
     public void LevelEnd()
     {
         levelCompleteText.SetActive(true);
-        levelcomplete = true;
+
 		// load next level
     }
 }

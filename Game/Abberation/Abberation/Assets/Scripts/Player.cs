@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
     public float speed;
-    public bool alive;
-	public int life = 3;
-	public bool smallKeyCard = false;
-	public bool bigKeyCard = false;
+	private int life = 3;
+	public bool smallKeyCard;
+	public bool bigKeyCard;
 
 
     private Rigidbody2D rb2d;
@@ -17,10 +15,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        alive = true;
-		
+        smallKeyCard = false;
+        bigKeyCard = false;
+        life = PlayerPrefs.GetInt("life",life);
 
-    }
+}
 
     void FixedUpdate()
     {
@@ -29,7 +28,22 @@ public class Player : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rb2d.AddForce(movement * speed);
 
+        if (life < 3)
+        {
+            LifeBar.instance.LostOneLife();
+        }
 
+        if (life < 2)
+        {
+            LifeBar.instance.LostTwoLives();
+        }
+
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+            PlayerPrefs.SetInt("life", 3);
+            GameController.instance.GameOver();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -37,33 +51,38 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.tag == "EnemyLaser")
         {
-            life = -1;
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+            life -= 1;
+            PlayerPrefs.SetInt("life",life);
+            GameController.instance.PlayerDied();
         }
 
-        else if (life == 0)
+        else if ((other.gameObject.tag == "Door") && bigKeyCard)
         {
-            Destroy(gameObject);
-            alive = false;
-            GameController.instance.PlayerDied();
+            //Destroy(other.gameObject);
+            GameController.instance.LevelEnd();
+            bigKeyCard = false;
+        }
+
+        switch (other.gameObject.name)
+        {
+            case "SmallKeyCard":
+                smallKeyCard = true;
+                Destroy(other.gameObject);
+                ItemBar.instance.SKC();
+                break;
+
+            case "BigKeyCard":
+                bigKeyCard = true;
+                Destroy(other.gameObject);
+                ItemBar.instance.BKC();
+                break;
         }
     }
 
 	void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.gameObject.name)
-        {
-            case "SmallKeyCard":
-                smallKeyCard = true;
-				Destroy(other.gameObject);
-                break;
-			
-			case "BigKeyCard":
-                bigKeyCard = true;
-				Destroy(other.gameObject);
-                break;
-        }
+
 
     }
+   
 }

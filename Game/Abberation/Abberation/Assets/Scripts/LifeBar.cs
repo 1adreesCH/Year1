@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class LifeBar : MonoBehaviour
 {
-    public GameObject player;
-    public int lifeNum;
+    public static LifeBar instance;
+    public GameObject life1;
+    public GameObject life2;
+    //public GameObject life3;
 
-    void FixedUpdate()
+    void Awake()
     {
-        //if (player.life < lifeNum)
-       // {
-           // Destroy(gameObject);
-            //change to set active if the player can restore life
-       // }
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
     }
+
+    public void LostOneLife()
+    {
+        life1.SetActive(false);
+    }
+
+    public void LostTwoLives()
+    {
+        life2.SetActive(false);
+    }
+
+   // public void LostThreeLives()
+   // {
+
+   // }
 
 }

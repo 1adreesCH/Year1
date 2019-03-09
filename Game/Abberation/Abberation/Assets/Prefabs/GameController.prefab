@@ -45,5 +45,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 0}
   levelCompleteText: {fileID: 0}
-  gameover: 0
-  levelcomplete: 0
