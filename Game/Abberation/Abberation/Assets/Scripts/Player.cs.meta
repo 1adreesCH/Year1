@@ -3,7 +3,11 @@ guid: 17ce9d438ba502d4d8308028916d3d92
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PlayerLaser: {fileID: 4041641839928390780, guid: 82f3e3ffd2d1e5b4c940a5a10c4cc4ec,
+      type: 3}
+  - SoundClip: {fileID: 8300000, guid: 91e53a01a088b9d418d9b646c512c39c, type: 3}
+  - SoundSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

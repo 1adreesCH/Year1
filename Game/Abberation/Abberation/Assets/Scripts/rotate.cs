@@ -8,7 +8,7 @@ public class rotate : MonoBehaviour
     public bool rotatereverse = true;
     public bool reverse = false;
     public int count = 0;
-    int rotation = 1;
+    //int rotation = 1;
     void Start()
     {
 

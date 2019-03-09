@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - EnemyLaser
+  - Enemy
+  - PlayerLaser
   layers:
   - Default
   - TransparentFX
@@ -40,4 +43,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 648488929
+    locked: 0
+  - name: Level
+    uniqueID: 4196777143
+    locked: 0
+  - name: Sprites
+    uniqueID: 3378614211
+    locked: 0
+  - name: Laser
+    uniqueID: 127463707
+    locked: 0
+  - name: Foreground
+    uniqueID: 188270695
+    locked: 0
+  - name: UI
+    uniqueID: 2214781547
     locked: 0

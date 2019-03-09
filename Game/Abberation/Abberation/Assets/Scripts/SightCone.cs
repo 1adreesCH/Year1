@@ -5,7 +5,7 @@ using UnityEngine;
 public class SightCone : MonoBehaviour
 {
     Color c1 = Color.white;
-    Color c2 = Color.orange;
+    Color c2 = Color.red;
     
 
     private void Start()

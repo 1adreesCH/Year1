@@ -57,9 +57,8 @@ public class Enemy : MonoBehaviour
 			
 			else if (other.gameObject.tag == "PlayerLaser")
 			{
-			
-			life=-1;
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+            Destroy(gameObject);
 
 			}
 

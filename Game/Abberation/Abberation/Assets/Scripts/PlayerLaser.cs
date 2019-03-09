@@ -2,31 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLaserScript : MonoBehaviour
+public class PlayerLaser : MonoBehaviour
 {
- 
-
     public float speed;
 
-    void Start()
+    private void Start()
     {
-
 
     }
 
     void FixedUpdate()
     {
-
         transform.Translate(Vector3.up * speed * Time.deltaTime);
+
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(gameObject);
-
     }
 
-	void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.name)
         {
@@ -34,4 +31,5 @@ public class PlayerLaserScript : MonoBehaviour
                 Destroy(gameObject);
                 break;
         }
+    }
 }
