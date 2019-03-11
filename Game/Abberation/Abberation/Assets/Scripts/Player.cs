@@ -8,9 +8,8 @@ public class Player : MonoBehaviour
 	private int life = 3;
 	public bool smallKeyCard;
 	public bool bigKeyCard;
-
-
     private Rigidbody2D rb2d;
+    
 
     void Start()
     {
@@ -75,6 +74,7 @@ public class Player : MonoBehaviour
         {
             //Destroy(other.gameObject);
             GameController.instance.LevelEnd();
+            MainDoor.instance.OpenMainDoor();
             bigKeyCard = false;
         }
 
