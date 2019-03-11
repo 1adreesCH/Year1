@@ -25,8 +25,22 @@ public class Player : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rb2d.AddForce(movement * speed);
+        //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        //rb2d.AddForce(movement * speed);
+
+        if(moveHorizontal != 0)
+        {
+            moveVertical = 0;
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            rb2d.AddForce(movement * speed);
+        }
+
+        if (moveVertical != 0)
+        {
+            moveHorizontal = 0;
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            rb2d.AddForce(movement * speed);
+        }
 
         if (life < 3)
         {
@@ -44,6 +58,7 @@ public class Player : MonoBehaviour
             PlayerPrefs.SetInt("life", 3);
             GameController.instance.GameOver();
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D other)

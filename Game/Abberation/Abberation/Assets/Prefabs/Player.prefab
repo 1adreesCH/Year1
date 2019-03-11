@@ -217,8 +217,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDrag: 15
-  m_AngularDrag: 15
+  m_LinearDrag: 20
+  m_AngularDrag: 30
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -238,8 +238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 300
-  alive: 0
-  life: 3
   smallKeyCard: 0
   bigKeyCard: 0
 --- !u!61 &23309901
