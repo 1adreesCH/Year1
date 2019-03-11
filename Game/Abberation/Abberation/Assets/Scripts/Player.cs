@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
 	public bool smallKeyCard;
 	public bool bigKeyCard;
     private Rigidbody2D rb2d;
-    
+    public Animator anim;
+
 
     void Start()
     {
@@ -17,8 +18,12 @@ public class Player : MonoBehaviour
         smallKeyCard = false;
         bigKeyCard = false;
         life = PlayerPrefs.GetInt("life",life);
+        anim.SetBool("moveright", false);
+        anim.SetBool("moveleft", false);
+        anim.SetBool("moveup", false);
+        anim.SetBool("movedown", false);
 
-}
+    }
 
     void FixedUpdate()
     {
@@ -27,18 +32,82 @@ public class Player : MonoBehaviour
         //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         //rb2d.AddForce(movement * speed);
 
-        if(moveHorizontal != 0)
+        //if(moveHorizontal != 0)
         {
+           // moveVertical = 0;
+           // Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+           // rb2d.AddForce(movement * speed);
+        }
+
+       // if (moveVertical != 0)
+        {
+           // moveHorizontal = 0;
+           // Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+           // rb2d.AddForce(movement * speed);
+        }
+
+       // if (moveHorizontal == 0 && moveVertical == 0)
+        {
+           // anim.SetBool("moveright", false);
+           // anim.SetBool("moveleft", false);
+           // anim.SetBool("moveup", false);
+           // anim.SetBool("movedown", false);
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            anim.SetBool("moveright", false);
+            anim.SetBool("moveleft", false);
+            anim.SetBool("moveup", true);
+            anim.SetBool("movedown", false);
+
+            moveHorizontal = 0;
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            rb2d.AddForce(movement * speed);
+        }
+
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            anim.SetBool("moveright", false);
+            anim.SetBool("moveleft", false);
+            anim.SetBool("moveup", false);
+            anim.SetBool("movedown", true);
+
+            moveHorizontal = 0;
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            rb2d.AddForce(movement * speed);
+        }
+
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            anim.SetBool("moveright", false);
+            anim.SetBool("moveleft", true);
+            anim.SetBool("moveup", false);
+            anim.SetBool("movedown", false);
+
             moveVertical = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
 
-        if (moveVertical != 0)
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            moveHorizontal = 0;
+            anim.SetBool("moveright", true);
+            anim.SetBool("moveleft", false);
+            anim.SetBool("moveup", false);
+            anim.SetBool("movedown", false);
+
+            moveVertical = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
+        }
+
+        else
+        {
+            anim.SetBool("moveright", false);
+            anim.SetBool("moveleft", false);
+            anim.SetBool("moveup", false);
+            anim.SetBool("movedown", false);
         }
 
         if (life < 3)
@@ -72,7 +141,6 @@ public class Player : MonoBehaviour
 
         else if ((other.gameObject.tag == "Door") && bigKeyCard)
         {
-            //Destroy(other.gameObject);
             GameController.instance.LevelEnd();
             MainDoor.instance.OpenMainDoor();
             bigKeyCard = false;

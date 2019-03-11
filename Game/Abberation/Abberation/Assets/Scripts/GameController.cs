@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOverText;
     public GameObject levelCompleteText;
     private bool gameover;
+    private bool levelcomplete;
 
 
     void Awake()
@@ -22,20 +23,27 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         gameover = false;
+        levelcomplete = false;
     }
 
     void Update()
     {
-        if (gameover && Input.GetKey(KeyCode.R))
+        if (gameover && Input.GetKey(KeyCode.Space))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            //change to boot to main menu
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
+        }
+
+        else if (levelcomplete && Input.GetKey(KeyCode.Space))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);           
         }
     }
 
     public void PlayerDied()
     {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
     }
 
     public void GameOver()
@@ -48,7 +56,8 @@ public class GameController : MonoBehaviour
     public void LevelEnd()
     {
         levelCompleteText.SetActive(true);
+        levelcomplete = true;
 
-		// load next level
+		
     }
 }
