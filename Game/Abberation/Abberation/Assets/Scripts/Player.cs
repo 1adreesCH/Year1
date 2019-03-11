@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
             PlayerPrefs.SetInt("life", 3);
             GameController.instance.GameOver();
+            LifeBar.instance.LostThreeLives();
         }
 
     }

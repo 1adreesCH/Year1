@@ -15,17 +15,11 @@ public class SightCone : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.gameObject.name)
+        if (other.gameObject.tag == "Player")
         {
-            case "Player":
-                print("Attack");
                 LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
                 lineRenderer.startColor = c1;
                 lineRenderer.endColor = c2;
-                break;
-
         }
-
-
     }
 }

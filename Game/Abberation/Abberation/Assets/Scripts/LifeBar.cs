@@ -7,7 +7,7 @@ public class LifeBar : MonoBehaviour
     public static LifeBar instance;
     public GameObject life1;
     public GameObject life2;
-    //public GameObject life3;
+    public GameObject life3;
 
     void Awake()
     {
@@ -27,9 +27,9 @@ public class LifeBar : MonoBehaviour
         life2.SetActive(false);
     }
 
-   // public void LostThreeLives()
-   // {
-
-   // }
+    public void LostThreeLives()
+    {
+        life3.SetActive(false);
+    }
 
 }
