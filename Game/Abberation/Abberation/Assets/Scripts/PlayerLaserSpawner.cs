@@ -11,16 +11,11 @@ public class PlayerLaserSpawner : MonoBehaviour
     private float timeDelayCounter;
     public bool canShoot;
 
-    //public float rotateCounter;
-
     private void Start()
     {
         SoundSource.clip = SoundClip;
         canShoot = true;
         timeDelayCounter = timeDelay;
-
-        //rotateCounter = 0;
-
     }
 
     private void FixedUpdate()

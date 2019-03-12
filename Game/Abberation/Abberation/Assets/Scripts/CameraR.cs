@@ -7,18 +7,35 @@ public class CameraR : MonoBehaviour
     private bool canRotate;
     public int maxAngle;
     private int count;
+    public float timeDelay;
+    private float timeDelayCounter;
+    public bool delay;
 
     void Start()
     {
         count = 0;
+        delay = false;
+        timeDelayCounter = timeDelay;
     }
 
     void FixedUpdate()
     {
-        if (canRotate)
+        if(!delay)
+        {
+            timeDelayCounter -= Time.deltaTime;
+
+            if (timeDelayCounter <= 0)
+            {
+                delay = true;
+                timeDelayCounter = timeDelay;
+            }
+        }
+
+        if (canRotate && delay)
         {
             transform.Rotate(0, 0, 1);
             count = count + 1;
+            delay = false;
 
             if (count >= maxAngle)
             {
@@ -27,10 +44,11 @@ public class CameraR : MonoBehaviour
             }
         }
 
-        else if (!canRotate)
+        else if (!canRotate && delay)
         {
             transform.Rotate(0, 0, -1);
             count = count + 1;
+            delay = false;
 
             if (count >= maxAngle)
             {
@@ -40,14 +58,6 @@ public class CameraR : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(other.gameObject);
-        }
-
-    }
 
 
 }

@@ -23,13 +23,5 @@ public class PlayerLaser : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        switch (other.gameObject.name)
-        {
-            case "Player":
-                Destroy(gameObject);
-                break;
-        }
-    }
+
 }

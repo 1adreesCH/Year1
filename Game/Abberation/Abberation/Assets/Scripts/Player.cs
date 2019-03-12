@@ -32,28 +32,6 @@ public class Player : MonoBehaviour
         //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         //rb2d.AddForce(movement * speed);
 
-        //if(moveHorizontal != 0)
-        {
-           // moveVertical = 0;
-           // Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-           // rb2d.AddForce(movement * speed);
-        }
-
-       // if (moveVertical != 0)
-        {
-           // moveHorizontal = 0;
-           // Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-           // rb2d.AddForce(movement * speed);
-        }
-
-       // if (moveHorizontal == 0 && moveVertical == 0)
-        {
-           // anim.SetBool("moveright", false);
-           // anim.SetBool("moveleft", false);
-           // anim.SetBool("moveup", false);
-           // anim.SetBool("movedown", false);
-        }
-
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             anim.SetBool("moveright", false);
@@ -133,7 +111,7 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "EnemyLaser")
+        if (other.gameObject.tag == "EnemyLaser" )
         {
             life -= 1;
             PlayerPrefs.SetInt("life",life);
@@ -145,6 +123,12 @@ public class Player : MonoBehaviour
             GameController.instance.LevelEnd();
             MainDoor.instance.OpenMainDoor();
             bigKeyCard = false;
+        }
+
+        else if ((other.gameObject.tag == "SDoor") && smallKeyCard)
+        {
+            SmallDoor.instance.OpenSmallDoor();
+            smallKeyCard = false;
         }
 
         switch (other.gameObject.name)
@@ -165,7 +149,12 @@ public class Player : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
     {
-
+        if (other.gameObject.tag == "Camera")
+        {
+            life -= 1;
+            PlayerPrefs.SetInt("life", life);
+            GameController.instance.PlayerDied();
+        }
 
     }
    

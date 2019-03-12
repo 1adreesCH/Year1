@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainDoor : MonoBehaviour
+public class SmallDoor : MonoBehaviour
 {
-    public static MainDoor instance;
+    public static SmallDoor instance;
     public Animator anim;
 
     void Awake()
@@ -19,16 +19,16 @@ public class MainDoor : MonoBehaviour
     {
         anim.ResetTrigger("OpenT");
 
-       // BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-       // boxCollider2D.enabled = true;
+        BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = true;
     }
 
 
-    public void OpenMainDoor()
+    public void OpenSmallDoor()
     {
         anim.SetTrigger("OpenT");
 
-       // BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-       // boxCollider2D.enabled = false;
+        BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = false;
     }
 }
