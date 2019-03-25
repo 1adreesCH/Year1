@@ -16,45 +16,49 @@ public class CameraR : MonoBehaviour
         count = 0;
         delay = false;
         timeDelayCounter = timeDelay;
+
     }
 
     void FixedUpdate()
     {
-        if(!delay)
-        {
-            timeDelayCounter -= Time.deltaTime;
-
-            if (timeDelayCounter <= 0)
-            {
-                delay = true;
-                timeDelayCounter = timeDelay;
-            }
-        }
-
-        if (canRotate && delay)
+        if (canRotate &&!delay)
         {
             transform.Rotate(0, 0, 1);
             count = count + 1;
-            delay = false;
 
             if (count >= maxAngle)
             {
                 canRotate = false;
                 count = 0;
+
+                delay = true;
+                
             }
         }
 
-        else if (!canRotate && delay)
+        else if (!canRotate && !delay)
         {
             transform.Rotate(0, 0, -1);
             count = count + 1;
-            delay = false;
 
             if (count >= maxAngle)
             {
                 canRotate = true;
                 count = 0;
+
+                delay = true;
             }
+        }
+
+        else if (delay)
+        {
+            timeDelayCounter -= Time.deltaTime;
+        }
+
+        if(timeDelayCounter <= 0)
+        {
+            delay = false;
+            timeDelayCounter = timeDelay;
         }
     }
 

@@ -103,9 +103,7 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.tag == "PlayerLaser")
         {
-
             Destroy(gameObject);
-
         }
 
     }
@@ -117,6 +115,8 @@ public class Enemy : MonoBehaviour
             directionX = 0;
             directionY = 0;
         }
+
+
     }
 
 

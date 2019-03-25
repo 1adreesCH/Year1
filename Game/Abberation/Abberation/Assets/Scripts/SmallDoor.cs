@@ -6,6 +6,7 @@ public class SmallDoor : MonoBehaviour
 {
     public static SmallDoor instance;
     public Animator anim;
+    private SpriteRenderer sprite;
 
     void Awake()
     {
@@ -21,6 +22,9 @@ public class SmallDoor : MonoBehaviour
 
         BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         boxCollider2D.enabled = true;
+
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.sortingOrder = 4;
     }
 
 
@@ -30,5 +34,6 @@ public class SmallDoor : MonoBehaviour
 
         BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         boxCollider2D.enabled = false;
+        sprite.sortingOrder = 5;
     }
 }

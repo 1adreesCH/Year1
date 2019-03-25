@@ -29,8 +29,6 @@ public class Player : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        //rb2d.AddForce(movement * speed);
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
@@ -111,10 +109,10 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "EnemyLaser" )
+        if (other.gameObject.tag == "EnemyLaser")
         {
             life -= 1;
-            PlayerPrefs.SetInt("life",life);
+            PlayerPrefs.SetInt("life", life);
             GameController.instance.PlayerDied();
         }
 
@@ -123,6 +121,7 @@ public class Player : MonoBehaviour
             GameController.instance.LevelEnd();
             MainDoor.instance.OpenMainDoor();
             bigKeyCard = false;
+            Destroy(gameObject);
         }
 
         else if ((other.gameObject.tag == "SDoor") && smallKeyCard)
