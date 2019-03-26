@@ -24,15 +24,12 @@ public class GameController : MonoBehaviour
     {
         gameover = false;
         levelcomplete = false;
-        // Switch to 640 x 480 full-screen
-        //Screen.SetResolution(640, 480, true);
     }
 
     void Update()
     {
         if (gameover && Input.GetKey(KeyCode.Space))
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene(0);
         }
 
@@ -40,6 +37,12 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);           
         }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+
     }
 
     public void PlayerDied()

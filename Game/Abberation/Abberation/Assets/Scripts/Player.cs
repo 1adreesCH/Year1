@@ -128,6 +128,7 @@ public class Player : MonoBehaviour
         {
             SmallDoor.instance.OpenSmallDoor();
             smallKeyCard = false;
+            ItemBar.instance.NSKC();
         }
 
         switch (other.gameObject.name)

@@ -21,6 +21,11 @@ public class ItemBar : MonoBehaviour
         smallKeyCard.SetActive(true);
     }
 
+    public void NSKC()
+    {
+        smallKeyCard.SetActive(false);
+    }
+
     public void BKC()
     {
         bigKeyCard.SetActive(true);
