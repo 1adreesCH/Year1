@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallDoor : MonoBehaviour
+public class SmallDoor2a : MonoBehaviour
 {
-    public static SmallDoor instance;
+    public static SmallDoor2a instance;
     public Animator anim;
     private SpriteRenderer sprite;
     private float timedelay;

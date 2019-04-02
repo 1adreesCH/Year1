@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", true);
             anim.SetBool("movedown", false);
 
-            moveHorizontal = 0;
+            //moveHorizontal = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", false);
             anim.SetBool("movedown", true);
 
-            moveHorizontal = 0;
+            //moveHorizontal = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", false);
             anim.SetBool("movedown", false);
 
-            moveVertical = 0;
+            //moveVertical = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", false);
             anim.SetBool("movedown", false);
 
-            moveVertical = 0;
+            //moveVertical = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
@@ -109,14 +109,14 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "EnemyLaser")
+        if (other.gameObject.tag == "EnemyLaser" || other.gameObject.tag == "Enemy")
         {
             life -= 1;
             PlayerPrefs.SetInt("life", life);
             GameController.instance.PlayerDied();
         }
 
-        else if ((other.gameObject.tag == "Door") && bigKeyCard)
+        if ((other.gameObject.tag == "Door") && bigKeyCard)
         {
             GameController.instance.LevelEnd();
             MainDoor.instance.OpenMainDoor();
@@ -124,27 +124,35 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        else if ((other.gameObject.tag == "SDoor") && smallKeyCard)
+        if ((other.gameObject.tag == "SDoor") && smallKeyCard)
         {
             SmallDoor.instance.OpenSmallDoor();
             smallKeyCard = false;
             ItemBar.instance.NSKC();
         }
 
-        switch (other.gameObject.name)
-        {
-            case "SmallKeyCard":
-                smallKeyCard = true;
-                Destroy(other.gameObject);
-                ItemBar.instance.SKC();
-                break;
 
-            case "BigKeyCard":
-                bigKeyCard = true;
-                Destroy(other.gameObject);
-                ItemBar.instance.BKC();
-                break;
+        if ((other.gameObject.tag == "SDoor2") && smallKeyCard)
+        {
+            SmallDoor2a.instance.OpenSmallDoor();
+            smallKeyCard = false;
+            ItemBar.instance.NSKC();
         }
+
+        if ((other.gameObject.tag == "smallKeyCard"))
+        {
+            smallKeyCard = true;
+            Destroy(other.gameObject);
+            ItemBar.instance.SKC();
+        }
+
+        if ((other.gameObject.tag == "BigKeyCard"))
+        {
+            bigKeyCard = true;
+            Destroy(other.gameObject);
+            ItemBar.instance.BKC();
+        }
+
     }
 
 	void OnTriggerEnter2D(Collider2D other)

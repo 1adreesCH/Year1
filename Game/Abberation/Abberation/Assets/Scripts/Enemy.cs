@@ -91,12 +91,12 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Wall")
+        if (horizontal && (other.gameObject.tag == "Wall" || other.gameObject.tag == "SDoor"))
         {
             directionX = -directionX;
         }
 
-        if (vertical && other.gameObject.tag == "Wall")
+        if (vertical && (other.gameObject.tag == "Wall"|| other.gameObject.tag == "SDoor"))
         {
             directionY = -directionY;
         }
@@ -115,7 +115,6 @@ public class Enemy : MonoBehaviour
             directionX = 0;
             directionY = 0;
         }
-
 
     }
 

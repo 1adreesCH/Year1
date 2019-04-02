@@ -12,6 +12,9 @@ TagManager:
   - SDoor
   - Sightcone
   - Camera
+  - smallKeyCard
+  - BigKeyCard
+  - SDoor2
   layers:
   - Default
   - TransparentFX

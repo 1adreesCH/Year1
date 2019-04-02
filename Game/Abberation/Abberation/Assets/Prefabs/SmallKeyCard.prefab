@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1475961172856705945}
   m_Layer: 0
   m_Name: SmallKeyCard
-  m_TagString: Untagged
+  m_TagString: smallKeyCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
