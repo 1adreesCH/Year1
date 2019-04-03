@@ -1,54 +1,134 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-public class penemy : MonoBehaviour
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
 {
-    public bool hit;
-    public float posy;
-    public ParticleSystem particles;
-    public ParticleSystem particles1;
+    private Rigidbody2D rb2d;
+    public float speed;
+    private float directionX;
+    private float directionY;
+    public bool horizontal;
+    public bool vertical;
+    //public bool circle;
     public Animator anim;
-    float directiony = -1.0f;
-    int count = 1;
-    float speed = 0.01f;
+
+    void Start()
+    {
+        rb2d = GetComponent<Rigidbody2D>();
+
+        anim.SetBool("moveright", false);
+        anim.SetBool("moveleft", false);
+        anim.SetBool("moveup", false);
+        anim.SetBool("movedown", false);
+
+        if (horizontal)
+        {
+            directionX = 1f;
+            directionY = 0f;
+        }
+
+        else if (vertical)
+        {
+            directionX = 0f;
+            directionY = 1f;
+        }
+
+    }
+
     void FixedUpdate()
     {
-        Vector3 position = transform.localPosition;
-        position.y += speed * directiony;
-        posy = position.y;
-        transform.localPosition = position;
+
+        if (horizontal)
+        {
+            float moveHorizontal = directionX;
+            float moveVertical = directionY;
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            rb2d.AddForce(movement * speed);
+
+
+            if (directionX > 0)
+            {
+                anim.SetBool("moveright", true);
+                anim.SetBool("moveleft", false);
+                anim.SetBool("moveup", false);
+                anim.SetBool("movedown", false);
+            }
+            else if (directionX < 0)
+            {
+                anim.SetBool("moveright", false);
+                anim.SetBool("moveleft", true);
+                anim.SetBool("moveup", false);
+                anim.SetBool("movedown", false);
+            }
+        }
+
+        else if (vertical)
+        {
+            float moveHorizontal = directionX;
+            float moveVertical = directionY;
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            rb2d.AddForce(movement * speed);
+
+
+            if (directionY > 0)
+            {
+                anim.SetBool("moveright", false);
+                anim.SetBool("moveleft", false);
+                anim.SetBool("moveup", true);
+                anim.SetBool("movedown", false);
+            }
+            else if (directionY < 0)
+            {
+                anim.SetBool("moveright", false);
+                anim.SetBool("moveleft", false);
+                anim.SetBool("moveup", false);
+                anim.SetBool("movedown", true);
+            }
+        }
+
     }
+
     void OnCollisionEnter2D(Collision2D other)
     {
-        switch (other.gameObject.name)
+        if (horizontal && (other.gameObject.tag == "Wall" || other.gameObject.tag == "SDoor"))
         {
-            case "Wall":
-                if (count == 1)
-                {
-                    anim.SetBool("swap1", false);
-                    anim.SetBool("swap2", false);
-                    directiony = 1.0f;
-                    anim.SetBool("swap1", true);
-                    count = 2;
-                }
-                else if (count == 2)
-                {
-                    anim.SetBool("swap1", false);
-                    anim.SetBool("swap2", false);
-                    directiony = -1.0f;
-                    anim.SetBool("swap2", true);
-                    count = 1;
-                }
-
-                break;
-            case "laser":
-                particles.Emit(100);
-                particles1.Emit(100);
-                Destroy(gameObject);
-                break;
+            directionX = -directionX;
         }
+
+        if (vertical && (other.gameObject.tag == "Wall" || other.gameObject.tag == "SDoor"))
+        {
+            directionY = -directionY;
+        }
+
+        if (other.gameObject.tag == "PlayerLaser")
+        {
+            Destroy(gameObject);
+        }
+
     }
- 
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "EnemyLaser")
+        {
+            directionX = 0;
+            directionY = 0;
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
