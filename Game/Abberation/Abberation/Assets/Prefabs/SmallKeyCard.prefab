@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7584988035683032738}
   - component: {fileID: 4125827840634455129}
   - component: {fileID: 1475961172856705945}
+  - component: {fileID: 866995314986836918}
   m_Layer: 0
   m_Name: SmallKeyCard
   m_TagString: smallKeyCard
@@ -69,12 +70,12 @@ SpriteRenderer:
   m_SortingLayerID: -916353085
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bed373e863f719e49b464e5e35021001, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e44b8afb6dd0abe43a83dabacf43eced, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.42, y: 0.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -96,9 +97,9 @@ BoxCollider2D:
   m_Offset: {x: 0.035107553, y: 0.035107613}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.42, y: 0.58}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.3506333}
+    oldSize: {x: 0.42, y: 0.94}
+    newSize: {x: 0.42, y: 0.94}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -106,3 +107,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9297849, y: 0.9297848}
   m_EdgeRadius: 0
+--- !u!95 &866995314986836918
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866995314986836917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e384a34d0e8ff2247b6b83abf698b519, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

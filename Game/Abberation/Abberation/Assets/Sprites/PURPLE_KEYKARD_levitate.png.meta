@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad507ecd5edf21d4dbad01cdc31db8ef
+guid: 15f1c38a8290f7240818e04676a5659e
 TextureImporter:
   fileIDToRecycleName:
     21300000: PURPLE_KEYKARD_levitate_0
@@ -92,18 +92,18 @@ TextureImporter:
       name: PURPLE_KEYKARD_levitate_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 18
-        width: 42
-        height: 58
+        x: 0
+        y: 0
+        width: 94
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe837639865cedb4498844c4f8594f43
+      spriteID: 14976297d9a108b408a6c9714221d6ec
       vertices: []
       indices: 
       edges: []
@@ -112,18 +112,18 @@ TextureImporter:
       name: PURPLE_KEYKARD_levitate_1
       rect:
         serializedVersion: 2
-        x: 120
-        y: 23
-        width: 42
-        height: 58
+        x: 94
+        y: 0
+        width: 94
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7e3c252df23e647b8b5977b06a2517
+      spriteID: b4c2a5b4e5caaf543a8fd90f5c2f7949
       vertices: []
       indices: 
       edges: []
@@ -132,18 +132,18 @@ TextureImporter:
       name: PURPLE_KEYKARD_levitate_2
       rect:
         serializedVersion: 2
-        x: 215
-        y: 29
-        width: 42
-        height: 58
+        x: 188
+        y: 0
+        width: 94
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b20a97021c2c8b4dbb79557cec75611
+      spriteID: 9d5c736698d154e4a9293751081f4915
       vertices: []
       indices: 
       edges: []
@@ -152,18 +152,18 @@ TextureImporter:
       name: PURPLE_KEYKARD_levitate_3
       rect:
         serializedVersion: 2
-        x: 309
-        y: 23
-        width: 42
-        height: 58
+        x: 282
+        y: 0
+        width: 94
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e74769d82b87e1e46ae53b6298283b17
+      spriteID: 5b0b44bce732b6e41877a2963a05a50f
       vertices: []
       indices: 
       edges: []
@@ -172,18 +172,18 @@ TextureImporter:
       name: PURPLE_KEYKARD_levitate_4
       rect:
         serializedVersion: 2
-        x: 403
-        y: 18
-        width: 42
-        height: 58
+        x: 376
+        y: 0
+        width: 94
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84b51ee692eb91541b6ea22a2d872d0e
+      spriteID: 7bf3f762fa001294fa2d9d75d3a762cd
       vertices: []
       indices: 
       edges: []
@@ -191,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 755b81e7fa654064987106e994349965
+    spriteID: 8adf7b3001ca8304f84f0bb8f0a69bd4
     vertices: []
     indices: 
     edges: []
