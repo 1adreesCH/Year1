@@ -244,6 +244,8 @@ MonoBehaviour:
   horizontal: 1
   vertical: 0
   anim: {fileID: 6165413070407020830}
+  death: 0
+  sightcone: {fileID: 4393319160475701885}
 --- !u!50 &6165413070407020828
 Rigidbody2D:
   serializedVersion: 4

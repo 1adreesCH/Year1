@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour
     public bool vertical;
     //public bool circle;
     public Animator anim;
+    private float timedelay;
+    public bool death;
+    private SpriteRenderer sprite;
+    public GameObject sightcone;
 
     void Start()
     {
@@ -21,6 +25,11 @@ public class Enemy : MonoBehaviour
         anim.SetBool("moveleft", false);
         anim.SetBool("moveup", false);
         anim.SetBool("movedown", false);
+        anim.SetBool("Death 0", false);
+        BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = true;
+        sprite = GetComponent<SpriteRenderer>();
+        timedelay = 1f;
 
         if (horizontal)
         {
@@ -33,6 +42,8 @@ public class Enemy : MonoBehaviour
             directionX = 0f;
             directionY = 1f;
         }
+
+        death = false;
 
     }
 
@@ -87,6 +98,24 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        if (death)
+        {
+            timedelay -= Time.deltaTime;
+            speed = 0;
+            BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+            boxCollider2D.enabled = false;
+
+            anim.SetBool("moveright", false);
+            anim.SetBool("moveleft", false);
+            anim.SetBool("moveup", false);
+            anim.SetBool("movedown", false);
+
+            if (timedelay <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -103,7 +132,14 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.tag == "PlayerLaser")
         {
-            Destroy(gameObject);
+            anim.SetBool("Death 0", true);
+            death = true;
+
+            anim.SetBool("moveright", false);
+            anim.SetBool("moveleft", false);
+            anim.SetBool("moveup", false);
+            anim.SetBool("movedown", false);
+            sightcone.SetActive(false);
         }
 
     }

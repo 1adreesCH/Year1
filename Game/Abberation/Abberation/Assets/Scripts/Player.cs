@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 	public bool bigKeyCard;
     private Rigidbody2D rb2d;
     public Animator anim;
+    private float timedelay;
+    public bool death;
 
 
     void Start()
@@ -22,6 +24,9 @@ public class Player : MonoBehaviour
         anim.SetBool("moveleft", false);
         anim.SetBool("moveup", false);
         anim.SetBool("movedown", false);
+        anim.SetBool("Death 0", false);
+        timedelay = 1f;
+        death = false;
 
     }
 
@@ -37,7 +42,6 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", true);
             anim.SetBool("movedown", false);
 
-            //moveHorizontal = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
@@ -49,7 +53,6 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", false);
             anim.SetBool("movedown", true);
 
-            //moveHorizontal = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
@@ -61,7 +64,6 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", false);
             anim.SetBool("movedown", false);
 
-            //moveVertical = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
         }
@@ -73,9 +75,21 @@ public class Player : MonoBehaviour
             anim.SetBool("moveup", false);
             anim.SetBool("movedown", false);
 
-            //moveVertical = 0;
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb2d.AddForce(movement * speed);
+        }
+
+        else if (death)
+        {
+            timedelay -= Time.deltaTime;
+            speed = 0;
+
+            if (timedelay <= 0)
+            {
+                Destroy(gameObject);
+                PlayerPrefs.SetInt("life", 3);
+                GameController.instance.GameOver();
+            }
         }
 
         else
@@ -98,10 +112,10 @@ public class Player : MonoBehaviour
 
         if (life <= 0)
         {
-            Destroy(gameObject);
-            PlayerPrefs.SetInt("life", 3);
-            GameController.instance.GameOver();
             LifeBar.instance.LostThreeLives();
+            anim.SetBool("Death 0", true);
+            speed = 0;
+            death = true;
         }
 
     }
@@ -109,11 +123,12 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "EnemyLaser" || other.gameObject.tag == "Enemy")
+        if ((other.gameObject.tag == "EnemyLaser" || other.gameObject.tag == "Enemy")&& life >= 0)
         {
             life -= 1;
             PlayerPrefs.SetInt("life", life);
             GameController.instance.PlayerDied();
+            anim.SetBool("Death 0", true);
         }
 
         if ((other.gameObject.tag == "Door") && bigKeyCard)
@@ -157,11 +172,12 @@ public class Player : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Camera")
+        if ((other.gameObject.tag == "Camera")&& life >= 0)
         {
             life -= 1;
             PlayerPrefs.SetInt("life", life);
             GameController.instance.PlayerDied();
+            anim.SetBool("Death 0", true);
         }
 
     }
